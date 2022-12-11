@@ -9,7 +9,8 @@ let package = Package(
                 .macOS(.v10_13)],
     products: [
         .library(
-            name: "YTLiveStreaming",
+            name: "YTLiveStreaming", type: .dynamic, 
+            
             targets: ["YTLiveStreaming"])
     ],
     dependencies: [.package(url: "https://github.com/SwiftyJSON/SwiftyJSON.git", .upToNextMajor(from: "4.0.0")),
