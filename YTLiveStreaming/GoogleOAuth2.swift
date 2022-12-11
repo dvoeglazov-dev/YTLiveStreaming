@@ -16,21 +16,11 @@ import KeychainAccess
 // For more info see https://developers.google.com/identity/protocols/OAuth2WebServer#handlingtheresponse
 // And https://developers.google.com/+/web/api/rest/oauth
 
-public class GoogleOAuth2: NSObject {
-   let keychain: Keychain
+public class GoogleOAuth2 {
+   let keychain = Keychain(service: LiveAPI.BaseURL)
    let kOAuth2AccessTokenService: String = "OAuth2AccessToken"
 
-   public class var sharedInstance: GoogleOAuth2 {
-      struct Singleton {
-         static let instance = GoogleOAuth2()
-      }
-      return Singleton.instance
-   }
-
-   override init() {
-      self.keychain = Keychain(service: LiveAPI.BaseURL)
-      super.init()
-   }
+   public static var sharedInstance = GoogleOAuth2()
 
    var isAccessTokenPresented: Bool {
       return accessToken != nil
