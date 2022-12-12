@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # from here: https://forums.swift.org/t/how-to-build-swift-package-as-xcframework/41414/4
+# Check bitcode is enabled with `otool -l YTLiveStreaming.o | grep __LLVM`
 
 set -x
 set -e
@@ -14,7 +15,7 @@ for PLATFORM in "iOS" "iOS Simulator"; do
     case $PLATFORM in
     "iOS")
     RELEASE_FOLDER="Release-iphoneos"
-    BITCODE="BITCODE_GENERATION_MODE=bitcode"
+    BITCODE="ENABLE_BITCODE=1"
     ;;
     "iOS Simulator")
     RELEASE_FOLDER="Release-iphonesimulator"

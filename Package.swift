@@ -9,7 +9,7 @@ let package = Package(
                 .macOS(.v10_13)],
     products: [
         .library(
-            name: "YTLiveStreaming", type: .dynamic, 
+            name: "YTLiveStreaming", type: .dynamic,         
             
             targets: ["YTLiveStreaming"])
     ],
