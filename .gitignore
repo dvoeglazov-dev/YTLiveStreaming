@@ -28,3 +28,4 @@ Podfile.lock
 .build
 
 Sample/Config.plist
+YTLiveStreaming.xcframework
