@@ -14,9 +14,11 @@ for PLATFORM in "iOS" "iOS Simulator"; do
     case $PLATFORM in
     "iOS")
     RELEASE_FOLDER="Release-iphoneos"
+    BITCODE="BITCODE_GENERATION_MODE=bitcode"
     ;;
     "iOS Simulator")
     RELEASE_FOLDER="Release-iphonesimulator"
+    BITCODE=""
     ;;
     esac
 
@@ -31,7 +33,7 @@ for PLATFORM in "iOS" "iOS Simulator"; do
             -destination "generic/platform=$PLATFORM" \
             -archivePath $ARCHIVE_PATH \
             -derivedDataPath ".build" \
-            SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+            SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES $BITCODE
 
     FRAMEWORK_PATH="$ARCHIVE_PATH.xcarchive/Products/usr/local/lib/$NAME.framework"
     MODULES_PATH="$FRAMEWORK_PATH/Modules"
