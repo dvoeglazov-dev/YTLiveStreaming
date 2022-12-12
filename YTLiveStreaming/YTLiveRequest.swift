@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class YTLiveRequest: NSObject {
+public class YTLiveRequest {
     // Set up broadcast on your Youtube account:
     // https://www.youtube.com/my_live_events
     // https://www.youtube.com/live_dashboard
@@ -24,7 +24,7 @@ class YTLiveRequest: NSObject {
 // MARK: LiveBroatcasts requests
 // https://developers.google.com/youtube/v3/live/docs/liveBroadcasts
 
-extension YTLiveRequest {
+public extension YTLiveRequest {
 
     class func getHeaders(_ completion: @escaping (HTTPHeaders?) -> Void) {
         GoogleOAuth2.sharedInstance.requestToken { token in
@@ -353,7 +353,7 @@ extension YTLiveRequest {
 // A liveStream resource contains information about the video stream that you are transmitting to YouTube.
 // The stream provides the content that will be broadcast to YouTube users.
 // Once created, a liveStream resource can be bound to one or more liveBroadcast resources.
-extension YTLiveRequest {
+public extension YTLiveRequest {
     // Returns a list of video streams that match the API request parameters.
     // https://developers.google.com/youtube/v3/live/docs/liveStreams/list
     class func getLiveStream(_ liveStreamId: String, completion: @escaping (Result<LiveStreamModel, YTError>) -> Void) {
