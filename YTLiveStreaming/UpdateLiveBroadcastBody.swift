@@ -79,12 +79,26 @@ struct CreateLiveBroadcastBody: Codable {
         }
     }
 
+    struct ContentDetails: Codable {
+        struct MonitorStream: Codable {
+            var enableMonitorStream: Bool
+        }
+        
+        var monitorStream: MonitorStream
+        var enableAutoStart: Bool
+        var enableAutoStop: Bool
+    }
+    
     let snippet: Snipped
     let status: Status
-
+    let contentDetails: ContentDetails
+    
     init(title: String, startDateTime: Date) {
         snippet = Snipped(title: title, startDateTime: startDateTime)
         status = Status(privacyStatus: "public")
+        contentDetails = ContentDetails(monitorStream: ContentDetails.MonitorStream(enableMonitorStream: true),
+                                        enableAutoStart: true,
+                                        enableAutoStop: true)
     }
 }
 
